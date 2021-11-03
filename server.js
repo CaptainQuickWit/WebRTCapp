@@ -14,6 +14,12 @@ app.get('/', (req, res) => {
 
 })
 
+io.on('connection', socket => {
+    socket.on('join-room', (roomId, userId) => {
+        console.log(roomId,userId)
+    })
+})
+
 app.get('/:room', (req,res) => {
     res.render('room', {roomId: req.params.room})
 })
